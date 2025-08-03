@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import AdmissionDetail from './AdmissionDetail.vue';
 
 // Admission Status Enum
 enum AdmissionStatus {
@@ -114,6 +115,14 @@ const filteredAdmissionDataList = computed(() => {
     return statusMatch && degreeMatch;
   });
 });
+
+// 当前选中的录取 ID
+const selectedId = ref<number | null>(null);
+
+// 显示录取详情弹窗
+function showDetail(id: number) {
+  selectedId.value = id;
+}
 </script>
 
 <template>
@@ -156,7 +165,7 @@ const filteredAdmissionDataList = computed(() => {
       <tbody>
         <tr v-for="admission in filteredAdmissionDataList" :key="admission.id">
           <td>{{ admission.id }}</td>
-          <td>{{ admission.name }}</td>
+          <td @click="showDetail(admission.id)" class="link-name">{{ admission.name }}</td>
           <td>{{ admission.degree }}</td>
           <td>{{ admission.school }}</td>
           <td>{{ admission.targetSchool }}</td>
@@ -173,6 +182,8 @@ const filteredAdmissionDataList = computed(() => {
       </tbody>
     </table>
   </div>
+
+  <AdmissionDetail v-if="selectedId" :id="selectedId" @close="selectedId = null" />
 </template>
 
 <style scoped>
@@ -237,6 +248,11 @@ tbody tr:hover {
 tbody td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
+}
+
+.link-name {
+  color: #007bff;
+  cursor: pointer;
 }
 
 .admission-status {
