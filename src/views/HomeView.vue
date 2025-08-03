@@ -1,13 +1,35 @@
+<script setup lang="ts">
+import AdmissionList from '../components/AdmissionList.vue';
+</script>
+
 <template>
-  <div>
-    <h1>Home View</h1>
+  <div class="container">
+    <div class="navbar">
+
+    </div>
+    <div class="content">
+      <AdmissionList />
+    </div>
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
-
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+  background-color: #f4f4f4;
+}
 </style>
+
