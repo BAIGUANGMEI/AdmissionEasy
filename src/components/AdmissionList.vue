@@ -205,6 +205,10 @@ h2 {
 .filter-section {
   margin-bottom: 20px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
 .filter-section label {
@@ -216,6 +220,8 @@ h2 {
   padding: 5px;
   border-radius: 4px;
   border: 1px solid #ddd;
+  width: 100%;
+  max-width: 200px;
 }
 
 .admission-table {
@@ -271,4 +277,49 @@ tbody td {
 .status-rejected {
   color: #e74c3c;
 }
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .admission-list {
+    padding: 10px;
+  }
+
+  .admission-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100vw; 
+  }
+
+  tbody td {
+    display: block;
+    text-align: left;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: none;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+  }
+}
+
 </style>

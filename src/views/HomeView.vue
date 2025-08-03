@@ -17,7 +17,8 @@ import AdmissionList from '../components/AdmissionList.vue';
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .navbar {
