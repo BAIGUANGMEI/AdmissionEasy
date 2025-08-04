@@ -15,7 +15,7 @@ const fetchAdmissionDetail = (id: number) => {
     // 模拟数据
     const data: AdmissionDetailData = {
         id,
-        name: "John Doe",
+        name: "求个Offer",
         major: "Computer Science",
         school: "Harvard University",
         targetSchool: "Stanford University",
@@ -91,7 +91,7 @@ watch(
 }
 
 .admission-detail {
-  max-width: 700px;
+  width: 500px;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -162,5 +162,13 @@ h2 {
 
 .close-button:hover {
   background-color: #c0392b;
+}
+
+@media screen and (max-width: 768px) {
+  .admission-detail {
+    width: 90%;
+    padding: 15px;
+  }
+  
 }
 </style>

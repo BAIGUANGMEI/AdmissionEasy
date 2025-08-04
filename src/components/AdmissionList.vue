@@ -9,7 +9,7 @@ import { AdmissionStatus, TargetDegree } from '../types/admissionTypes';
 const admissionDataList = ref<AdmissionData[]>([
   {
     id: 1,
-    name: "John Doe",
+    name: "求个Offer",
     major: "Computer Science",
     school: "Harvard University",
     targetSchool: "Stanford University",
@@ -21,7 +21,7 @@ const admissionDataList = ref<AdmissionData[]>([
   },
   {
     id: 2,
-    name: "Jane Smith",
+    name: "无敌是多么寂寞",
     major: "History",
     school: "University of Oxford",
     targetSchool: "University of Cambridge",
@@ -33,7 +33,7 @@ const admissionDataList = ref<AdmissionData[]>([
   },
   {
     id: 3,
-    name: "Alice Johnson",
+    name: "Happy",
     major: "Physics",
     school: "California Institute of Technology (Caltech)",
     targetSchool: "Massachusetts Institute of Technology (MIT)",
@@ -45,7 +45,7 @@ const admissionDataList = ref<AdmissionData[]>([
   },
   {
     id: 4,
-    name: "Michael Brown",
+    name: "赢！",
     major: "Philosophy",
     school: "Princeton University",
     targetSchool: "Yale University",
@@ -57,7 +57,7 @@ const admissionDataList = ref<AdmissionData[]>([
   },
   {
     id: 5,
-    name: "Emily Davis",
+    name: "会有吗",
     major: "Biotechnology",
     school: "University of Chicago",
     targetSchool: "Columbia University",
@@ -69,7 +69,7 @@ const admissionDataList = ref<AdmissionData[]>([
   },
   {
     id: 6,
-    name: "Christopher Wilson",
+    name: "申请就有",
     major: "Mathematics",
     school: "University of California, Berkeley",
     targetSchool: "University of Toronto",
@@ -255,7 +255,7 @@ tbody td {
 }
 
 /* 移动端适配 */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .admission-list {
     padding: 10px;
   }
