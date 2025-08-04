@@ -16,12 +16,13 @@ const fetchAdmissionDetail = (id: number) => {
     const data: AdmissionDetailData = {
         id,
         name: "John Doe",
-        degree: "Bachelor of Science",
+        major: "Computer Science",
         school: "Harvard University",
         targetSchool: "Stanford University",
         targetProgramme: "Computer Science",
         targetDegree: TargetDegree.Masters,
         applyYear: "2023",
+        season: "Fall",
         timeLine: new Map([["2023-01-01", "Application Submitted"], ["2023-02-01", "Interview Scheduled"]]),
         GPA: "3.8",
         Language: "IELTS:7",
@@ -46,30 +47,31 @@ watch(
 <template>
   <div v-if="admission" class="admission-detail-overlay">
     <div class="admission-detail">
-      <h2>Admission Detail</h2>
+      <h2>申请详情</h2>
       <div class="detail-card">
-        <p><strong>Name:</strong> {{ admission.name }}</p>
-        <p><strong>Degree:</strong> {{ admission.degree }}</p>
-        <p><strong>Current School:</strong> {{ admission.school }}</p>
-        <p><strong>Target School:</strong> {{ admission.targetSchool }}</p>
-        <p><strong>Target Programme:</strong> {{ admission.targetProgramme }}</p>
-        <p><strong>Target Degree:</strong> {{ admission.targetDegree }}</p>
-        <p><strong>Application Year:</strong> {{ admission.applyYear }}</p>
-        <p><strong>Status:</strong> <span :class="`status-${admission.status.toLowerCase()}`">{{ admission.status }}</span></p>
+        <p><strong>昵称:</strong> {{ admission.name }}</p>
+        <p><strong>专业:</strong> {{ admission.major }}</p>
+        <p><strong>学校:</strong> {{ admission.school }}</p>
+        <p><strong>申请学校:</strong> {{ admission.targetSchool }}</p>
+        <p><strong>申请专业:</strong> {{ admission.targetProgramme }}</p>
+        <p><strong>申请学位:</strong> {{ admission.targetDegree }}</p>
+        <p><strong>入学年份:</strong> {{ admission.applyYear }}</p>
+        <p><strong>入学季节:</strong> {{ admission.season }}</p>
+        <p><strong>状态:</strong> <span :class="`status-${admission.status.toLowerCase()}`">{{ admission.status }}</span></p>
         <p><strong>GPA:</strong> {{ admission.GPA }}</p>
-        <p><strong>Language:</strong> {{ admission.Language }}</p>
+        <p><strong>语言:</strong> {{ admission.Language }}</p>
         <p><strong>GRE:</strong> {{ admission.GRE }}</p>
         <p><strong>GMAT:</strong> {{ admission.GMAT }}</p>
       </div>
       <div class="timeline">
-        <h3>Application Timeline</h3>
+        <h3>申请时间线</h3>
         <ul>
           <li v-for="[date, event] in admission.timeLine" :key="date">
             <strong>{{ date }}:</strong> {{ event }}
           </li>
         </ul>
       </div>
-      <button class="close-button" @click="$emit('close')">Close</button>
+      <button class="close-button" @click="$emit('close')">关闭</button>
     </div>
   </div>
 </template>
@@ -99,8 +101,8 @@ watch(
 
 h2 {
   text-align: center;
-  color: #333;
   margin-bottom: 20px;
+  color: #333;
 }
 
 .detail-card {

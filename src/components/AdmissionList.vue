@@ -10,67 +10,73 @@ const admissionDataList = ref<AdmissionData[]>([
   {
     id: 1,
     name: "John Doe",
-    degree: "Bachelor of Science",
+    major: "Computer Science",
     school: "Harvard University",
     targetSchool: "Stanford University",
     targetProgramme: "Computer Science",
     targetDegree: TargetDegree.Masters,
     applyYear: "2023",
+    season: "Fall",
     status: AdmissionStatus.Pending,
   },
   {
     id: 2,
     name: "Jane Smith",
-    degree: "Master of Arts",
+    major: "History",
     school: "University of Oxford",
     targetSchool: "University of Cambridge",
     targetProgramme: "History",
     targetDegree: TargetDegree.Masters,
     applyYear: "2023",
+    season: "Spring",
     status: AdmissionStatus.Approved,
   },
   {
     id: 3,
     name: "Alice Johnson",
-    degree: "PhD in Physics",
+    major: "Physics",
     school: "California Institute of Technology (Caltech)",
     targetSchool: "Massachusetts Institute of Technology (MIT)",
     targetProgramme: "Astrophysics",
     targetDegree: TargetDegree.PhD,
     applyYear: "2023",
+    season: "Fall",
     status: AdmissionStatus.Rejected,
   },
   {
     id: 4,
     name: "Michael Brown",
-    degree: "Bachelor of Arts",
+    major: "Philosophy",
     school: "Princeton University",
     targetSchool: "Yale University",
     targetProgramme: "Philosophy",
     targetDegree: TargetDegree.Mphil,
     applyYear: "2024",
+    season: "Fall",
     status: AdmissionStatus.Pending,
   },
   {
     id: 5,
     name: "Emily Davis",
-    degree: "Master of Science",
+    major: "Biotechnology",
     school: "University of Chicago",
     targetSchool: "Columbia University",
     targetProgramme: "Biotechnology",
     targetDegree: TargetDegree.Masters,
     applyYear: "2024",
+    season: "Fall",
     status: AdmissionStatus.Approved,
   },
   {
     id: 6,
     name: "Christopher Wilson",
-    degree: "PhD in Mathematics",
+    major: "Mathematics",
     school: "University of California, Berkeley",
     targetSchool: "University of Toronto",
     targetProgramme: "Applied Mathematics",
     targetDegree: TargetDegree.PhD,
     applyYear: "2024",
+    season: "Fall",
     status: AdmissionStatus.Rejected,
   },
 ]);
@@ -106,7 +112,7 @@ function showDetail(id: number) {
   <div class="admission-list">
     <!-- Filter Dropdown -->
     <div class="filter-section">
-      <label for="status-filter">Filter by Status:</label>
+      <label for="status-filter">状态筛选:</label>
       <select id="status-filter" v-model="selectedStatus">
         <option value="All">All</option>
         <option value="Pending">Pending</option>
@@ -114,11 +120,11 @@ function showDetail(id: number) {
         <option value="Rejected">Rejected</option>
       </select>
 
-      <label for="status-filter">Filter by Degree:</label>
+      <label for="status-filter">申请学位筛选:</label>
       <select id="degree-filter" v-model="selectedDegree">
         <option value="All">All</option>
-        <option value="Bachelors">Bachelors</option>
         <option value="Masters">Masters</option>
+        <option value="MPhil">MPhil</option>
         <option value="PhD">PhD</option>
       </select>
     </div>
@@ -126,25 +132,27 @@ function showDetail(id: number) {
     <table class="admission-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Degree</th>
-          <th>School</th>
-          <th>Target School</th>
-          <th>Target Programme</th>
-          <th>Target Degree</th>
-          <th>Year</th>
-          <th>Status</th>
+          <th>昵称</th>
+          <th>专业</th>
+          <th>学校</th>
+          <th>申请学校</th>
+          <th>申请专业</th>
+          <th>申请学位</th>
+          <th>入学年份</th>
+          <th>入学季节</th>
+          <th>状态</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="admission in filteredAdmissionDataList" :key="admission.id">
           <td @click="showDetail(admission.id)" class="link-name">{{ admission.name }}</td>
-          <td>{{ admission.degree }}</td>
+          <td>{{ admission.major }}</td>
           <td>{{ admission.school }}</td>
           <td>{{ admission.targetSchool }}</td>
           <td>{{ admission.targetProgramme }}</td>
           <td>{{ admission.targetDegree }}</td>
           <td>{{ admission.applyYear }}</td>
+          <td>{{ admission.season }}</td>
           <td
             :class="`status-${admission.status.toLowerCase()}`"
             class="admission-status"
@@ -219,6 +227,7 @@ tbody tr:hover {
 }
 
 tbody td {
+  min-width: 80px;
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
