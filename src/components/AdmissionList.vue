@@ -2,34 +2,11 @@
 import { ref, computed } from "vue";
 import AdmissionDetail from './AdmissionDetail.vue';
 
-// Admission Status Enum
-enum AdmissionStatus {
-  Pending = "Pending",
-  Approved = "Approved",
-  Rejected = "Rejected",
-}
-
-enum TargetDegree {
-  Bachelors = "Bachelors",
-  Masters = "Masters",
-  PhD = "PhD",
-}
-
-// Admission Data Interface
-interface admissionData {
-  id: number;
-  name: string;
-  degree: string;
-  school: string;
-  targetSchool: string;
-  targetProgramme: string;
-  targetDegree: TargetDegree;
-  applyYear: string;
-  status: AdmissionStatus;
-}
+import type { AdmissionData } from '../types/admissionTypes';
+import { AdmissionStatus, TargetDegree } from '../types/admissionTypes';
 
 // Reactive Admission Data List
-const admissionDataList = ref<admissionData[]>([
+const admissionDataList = ref<AdmissionData[]>([
   {
     id: 1,
     name: "John Doe",
@@ -37,7 +14,7 @@ const admissionDataList = ref<admissionData[]>([
     school: "Harvard University",
     targetSchool: "Stanford University",
     targetProgramme: "Computer Science",
-    targetDegree: TargetDegree.Bachelors,
+    targetDegree: TargetDegree.Masters,
     applyYear: "2023",
     status: AdmissionStatus.Pending,
   },
@@ -70,7 +47,7 @@ const admissionDataList = ref<admissionData[]>([
     school: "Princeton University",
     targetSchool: "Yale University",
     targetProgramme: "Philosophy",
-    targetDegree: TargetDegree.Bachelors,
+    targetDegree: TargetDegree.Mphil,
     applyYear: "2024",
     status: AdmissionStatus.Pending,
   },
@@ -127,8 +104,6 @@ function showDetail(id: number) {
 
 <template>
   <div class="admission-list">
-    <h2>Admission List</h2>
-
     <!-- Filter Dropdown -->
     <div class="filter-section">
       <label for="status-filter">Filter by Status:</label>
@@ -151,7 +126,6 @@ function showDetail(id: number) {
     <table class="admission-table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Name</th>
           <th>Degree</th>
           <th>School</th>
@@ -164,7 +138,6 @@ function showDetail(id: number) {
       </thead>
       <tbody>
         <tr v-for="admission in filteredAdmissionDataList" :key="admission.id">
-          <td>{{ admission.id }}</td>
           <td @click="showDetail(admission.id)" class="link-name">{{ admission.name }}</td>
           <td>{{ admission.degree }}</td>
           <td>{{ admission.school }}</td>
@@ -194,12 +167,6 @@ function showDetail(id: number) {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
 }
 
 .filter-section {
@@ -296,6 +263,10 @@ tbody td {
     display: none;
   }
 
+  tbody {
+    display: block;
+  }
+
   tbody tr {
     display: flex;
     flex-direction: column;
@@ -303,7 +274,8 @@ tbody td {
     margin-bottom: 10px;
     border-radius: 8px;
     padding: 10px;
-    width: 100vw; 
+    width: 100%; 
+    box-sizing: border-box;
   }
 
   tbody td {
@@ -312,6 +284,7 @@ tbody td {
     justify-content: space-between;
     padding: 5px 0;
     border-bottom: none;
+    white-space: normal;
   }
 
   tbody td::before {

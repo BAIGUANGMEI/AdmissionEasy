@@ -5,7 +5,7 @@ import AdmissionList from '../components/AdmissionList.vue';
 <template>
   <div class="container">
     <div class="navbar">
-
+      <h1>Admission Easy</h1>
     </div>
     <div class="content">
       <AdmissionList />
@@ -18,13 +18,20 @@ import AdmissionList from '../components/AdmissionList.vue';
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 100%;
 }
 
 .navbar {
   background-color: #333;
   color: white;
   padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1{
+  margin: 0;
+  font-size: 1.8rem;
 }
 
 .content {

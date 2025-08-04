@@ -1,54 +1,26 @@
 <script setup lang="ts">
 import { defineProps, ref, watch } from 'vue';
 
-// Admission Status Enum
-enum AdmissionStatus {
-  Pending = "Pending",
-  Approved = "Approved",
-  Rejected = "Rejected",
-}
-
-enum TargetDegree {
-  Bachelors = "Bachelors",
-  Masters = "Masters",
-  PhD = "PhD",
-}
-
-// Admission Data Interface
-interface admissionDetailData {
-  id: number;
-  name: string;
-  degree: string;
-  school: string;
-  targetSchool: string;
-  targetProgramme: string;
-  targetDegree: TargetDegree;
-  applyYear: string;
-  timeLine: Map<string, string>;
-  GPA: string;
-  Language?: string;
-  GRE?: string;
-  GMAT?: string;
-  status: AdmissionStatus;
-}
+import type { AdmissionDetailData } from '../types/admissionTypes';
+import { AdmissionStatus, TargetDegree } from '../types/admissionTypes';
 
 // 接收父组件传入的 id
 const props = defineProps<{ id: number }>();
 
 // Reactive Admission Detail
-const admission = ref<admissionDetailData | null>(null);
+const admission = ref<AdmissionDetailData | null>(null);
 
 // 模拟获取详细数据
 const fetchAdmissionDetail = (id: number) => {
     // 模拟数据
-    const data: admissionDetailData = {
+    const data: AdmissionDetailData = {
         id,
         name: "John Doe",
         degree: "Bachelor of Science",
         school: "Harvard University",
         targetSchool: "Stanford University",
         targetProgramme: "Computer Science",
-        targetDegree: TargetDegree.Bachelors,
+        targetDegree: TargetDegree.Masters,
         applyYear: "2023",
         timeLine: new Map([["2023-01-01", "Application Submitted"], ["2023-02-01", "Interview Scheduled"]]),
         GPA: "3.8",
@@ -76,7 +48,6 @@ watch(
     <div class="admission-detail">
       <h2>Admission Detail</h2>
       <div class="detail-card">
-        <p><strong>ID:</strong> {{ admission.id }}</p>
         <p><strong>Name:</strong> {{ admission.name }}</p>
         <p><strong>Degree:</strong> {{ admission.degree }}</p>
         <p><strong>Current School:</strong> {{ admission.school }}</p>
