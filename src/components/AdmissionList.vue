@@ -50,7 +50,7 @@ const admissionDataList = ref<AdmissionData[]>([
     school: "Princeton University",
     targetSchool: "Yale University",
     targetProgramme: "Philosophy",
-    targetDegree: TargetDegree.Mphil,
+    targetDegree: TargetDegree.MPhil,
     applyYear: "2024",
     season: "Fall",
     status: AdmissionStatus.Pending,

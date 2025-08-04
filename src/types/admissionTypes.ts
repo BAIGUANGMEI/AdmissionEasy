@@ -6,7 +6,7 @@ export enum AdmissionStatus {
 
 export enum TargetDegree {
     Masters = "Masters",
-    Mphil = "MPhil",
+    MPhil = "MPhil",
     PhD = "PhD",
 }
 
