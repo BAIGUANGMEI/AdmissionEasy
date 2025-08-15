@@ -33,6 +33,7 @@ const fetchAdmissionDetail = (id: number) => {
       ["2023-02-01", "Interview Scheduled"],
       ["2023-03-15", "Interview Completed"],
       ["2023-04-01", "Final Decision Pending"],
+      ["2023-05-01", "Offer Accepted"],
     ]),
     GPA: "3.8",
     Language: "IELTS:7.5",
@@ -261,7 +262,8 @@ watch(
 
 .timeline-title {
   min-width: 100px;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  margin: 0;
   font-weight: 600;
 }
 
@@ -282,7 +284,7 @@ watch(
 }
 
 .timeline-content.open {
-  max-height: 600px; 
+  max-height: 800px; 
 }
 
 .timeline {

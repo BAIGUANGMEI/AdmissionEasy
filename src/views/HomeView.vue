@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AdmissionList from '../components/AdmissionList.vue';
+import Footer from '../components/Footer.vue';
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import AdmissionList from '../components/AdmissionList.vue';
       </div>
       <AdmissionList />
     </div>
+    <Footer />
   </div>
 </template>
 
