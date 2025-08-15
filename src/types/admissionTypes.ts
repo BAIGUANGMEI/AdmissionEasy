@@ -24,6 +24,9 @@ export interface AdmissionData {
 }
 
 export interface AdmissionDetailData extends AdmissionData {
+    intern?: Array<string>;
+    project?: Array<string>;
+    publication?: Array<string>;
     timeLine?: Map<string, string>;
     GPA?: string;
     Language?: string;

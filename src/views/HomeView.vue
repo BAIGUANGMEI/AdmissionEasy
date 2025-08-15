@@ -8,6 +8,9 @@ import AdmissionList from '../components/AdmissionList.vue';
       <h1>Admission Easy</h1>
     </div>
     <div class="content">
+      <div class="share-button">
+        <button @click="">分享</button>
+      </div>
       <AdmissionList />
     </div>
   </div>
