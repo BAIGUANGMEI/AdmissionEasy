@@ -3,7 +3,7 @@ import { ref, watch, computed } from "vue";
 import type { AdmissionDetailData } from "../types/admissionTypes";
 import { AdmissionStatus, TargetDegree } from "../types/admissionTypes";
 
-const props = defineProps<{ id: number }>();
+const props = defineProps<{ id: string }>();
 const emit = defineEmits<{
   (e: "close"): void;
 }>();
@@ -13,7 +13,7 @@ const admission = ref<AdmissionDetailData | null>(null);
 const timelineOpen = ref(true);
 
 
-const fetchAdmissionDetail = (id: number) => {
+const fetchAdmissionDetail = (id: string) => {
   // 模拟获取数据（替换为真实 API 调用）
   const data: AdmissionDetailData = {
     id,
@@ -54,7 +54,8 @@ function toggleTimeline() {
 watch(
   () => props.id,
   (newId) => {
-    if (typeof newId === "number") fetchAdmissionDetail(newId);
+    if (typeof newId === "string") fetchAdmissionDetail(newId);
+    console.log("Fetching details for admission ID:", newId);
   },
   { immediate: true }
 );

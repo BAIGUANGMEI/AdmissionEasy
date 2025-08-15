@@ -8,7 +8,7 @@ import { AdmissionStatus, TargetDegree } from '../types/admissionTypes';
 // Reactive Admission Data List
 const admissionDataList = ref<AdmissionData[]>([
   {
-    id: 1,
+    id:'1',
     name: "求个Offer",
     major: "Computer Science",
     school: "Harvard University",
@@ -20,7 +20,7 @@ const admissionDataList = ref<AdmissionData[]>([
     status: AdmissionStatus.Pending,
   },
   {
-    id: 2,
+    id: '2',
     name: "无敌是多么寂寞",
     major: "History",
     school: "University of Oxford",
@@ -32,7 +32,7 @@ const admissionDataList = ref<AdmissionData[]>([
     status: AdmissionStatus.Approved,
   },
   {
-    id: 3,
+    id: '3',
     name: "Happy",
     major: "Physics",
     school: "California Institute of Technology (Caltech)",
@@ -44,7 +44,7 @@ const admissionDataList = ref<AdmissionData[]>([
     status: AdmissionStatus.Rejected,
   },
   {
-    id: 4,
+    id: '4',
     name: "赢！",
     major: "Philosophy",
     school: "Princeton University",
@@ -56,7 +56,7 @@ const admissionDataList = ref<AdmissionData[]>([
     status: AdmissionStatus.Pending,
   },
   {
-    id: 5,
+    id: '5',
     name: "会有吗",
     major: "Biotechnology",
     school: "University of Chicago",
@@ -68,7 +68,7 @@ const admissionDataList = ref<AdmissionData[]>([
     status: AdmissionStatus.Approved,
   },
   {
-    id: 6,
+    id: '6',
     name: "申请就有",
     major: "Mathematics",
     school: "University of California, Berkeley",
@@ -100,10 +100,10 @@ const filteredAdmissionDataList = computed(() => {
 });
 
 // 当前选中的录取 ID
-const selectedId = ref<number | null>(null);
+const selectedId = ref<string | null>(null);
 
 // 显示录取详情弹窗
-function showDetail(id: number) {
+function showDetail(id: string) {
   selectedId.value = id;
 }
 </script>
@@ -256,6 +256,11 @@ tbody td {
 
 /* 移动端适配 */
 @media (max-width: 1100px) {
+  
+  .filter-section {
+    font-size: 0.9rem;
+  }
+
   .admission-list {
     padding: 10px;
   }

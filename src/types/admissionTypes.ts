@@ -11,7 +11,7 @@ export enum TargetDegree {
 }
 
 export interface AdmissionData {
-    id: number;
+    id: string;
     name: string;
     major: string;
     school?: string;
